@@ -84,8 +84,27 @@ f_hat_{Nx+1/2} = f_hat(u_bar_Nx, u_bar_1)
 ```matlab
 R = rhs_advection_1d(U, t, geom, params)
 ```
-- geom contains dx (cell widths)
+- geom contains dx (cell widths), Nx, Nf, xc, xf
 - params contains a (advection speed) and CFL
+
+## Implementation Progress
+
+### Completed
+- `READGRID_1D.m` — reads 1D grid file (Nf, xf)
+- `GEOM_1D.m` — computes cell widths (dx), cell centers (xc), stores Nf, Nx, xf
+- Bugs fixed: `zeros(Nf)` → `zeros(Nf,1)` in grid reader; `gird.Nf` typo in geom
+
+### In Progress
+- `rhs_advection_1d.m` — RHS function structure worked out:
+  1. Pull geom/params values at top of function
+  2. Physical flux: `pf = a * U` (one per cell, size Nx)
+  3. LLF numerical flux (one per face, size Nf) with loop and periodic BCs
+  4. Residual: `L(i) = -(1/dx(i)) * (LLF(i+1) - LLF(i))`
+
+### Not Yet Started
+- SSPRK2/SSPRK3 (from Module 0 — need to bring into MOD_A1 or confirm existing)
+- Main driver script (grid setup, IC, time loop, error computation, plots)
+- Test cases and report
 
 ---
 

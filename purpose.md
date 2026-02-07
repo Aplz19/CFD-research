@@ -23,6 +23,14 @@
 - Work through module questions and problems
 - Support daily 30min minimum CFD work sessions (math academy methodology for compounding returns)
 
+## How to Answer Questions
+- Only answer the exact question asked — no extra information, no spoilers
+- Do not volunteer next steps, hints, or things I could figure out on my own
+- Keep responses short and direct
+- If I show code, point out bugs but don't rewrite it for me
+- Only give extended explanations, walkthroughs, or suggestions when I explicitly ask for them
+- The goal is for me to work through problems myself; Claude is a sounding board, not a tutor giving the answers
+
 ## Workflow
 - You'll work ~30 mins/day on CFD
 - I'll maintain daily discussion notes and module summaries
