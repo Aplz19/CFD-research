@@ -1,6 +1,6 @@
 # Module A1 Summary
 
-**Status:** In Progress
+**Status:** Completed
 
 **Topic:** 1st-order Finite Volume method for 1D linear advection equation
 
@@ -89,22 +89,19 @@ R = rhs_advection_1d(U, t, geom, params)
 
 ## Implementation Progress
 
-### Completed
+### Files
 - `READGRID_1D.m` — reads 1D grid file (Nf, xf)
 - `GEOM_1D.m` — computes cell widths (dx), cell centers (xc), stores Nf, Nx, xf
-- Bugs fixed: `zeros(Nf)` → `zeros(Nf,1)` in grid reader; `gird.Nf` typo in geom
+- `rhs_advection_1d.m` — RHS function: physical flux, LLF numerical flux with periodic BCs, residual computation
+- `ssprk2.m` — SSPRK2 time integrator using function handles
+- `EXA1.m` — main driver script: grid setup, IC, time loop, error computation, plotting for all cases
 
-### In Progress
-- `rhs_advection_1d.m` — RHS function structure worked out:
-  1. Pull geom/params values at top of function
-  2. Physical flux: `pf = a * U` (one per cell, size Nx)
-  3. LLF numerical flux (one per face, size Nf) with loop and periodic BCs
-  4. Residual: `L(i) = -(1/dx(i)) * (LLF(i+1) - LLF(i))`
-
-### Not Yet Started
-- SSPRK2/SSPRK3 (from Module 0 — need to bring into MOD_A1 or confirm existing)
-- Main driver script (grid setup, IC, time loop, error computation, plots)
-- Test cases and report
+### Results
+- Error table generated for smooth uniform case across CFL = 0.5, 0.9, 1.5 and T = 0.5, 1.0, 1.5
+- First-order convergence confirmed: error halves as Nx doubles
+- CFL = 0.5 and 0.9 give nearly identical errors; CFL = 1.5 is unstable (blows up)
+- Non-smooth case shows numerical diffusion smearing the discontinuity; narrows with more cells but never truly sharp
+- Report completed: `EXA1_Cardozo.docx`/`.pdf`
 
 ---
 
